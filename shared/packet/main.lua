@@ -1,6 +1,7 @@
 local u = require('/utils/main')
+p = {}
 
-function Open()
+function p.Open()
   modem = peripheral.find("modem", function(name, object) object.side = name return true end)
   if modem == nil then
     u.out.err("No modem detected on computer!")
@@ -10,7 +11,7 @@ function Open()
   rednet.open(modem["side"])
 end
 
-function GetIP(ip)
+function p.GetIP(ip)
   if tonumber(ip) == nil then
     u.out.err("DNS Services have not been implemented!")
     return nil
@@ -18,24 +19,26 @@ function GetIP(ip)
   return ip
 end
 
-function SendPacket(ip, port, data)
-  ip = GetIP(ip)
+function p.SendPacket(ip, port, data)
+  ip = p.GetIP(ip)
+  u.out.dbg("Sending packet to " .. ip .. "...")
   rednet.send(ip, data, port)
 end
 
-function Get(ip, port, data, return_port, timeout)
+function p.Get(ip, port, data, return_port, timeout)
   if return_port == nil then
-    return_port = 81
+    return_port = "81"
   end
   if timeout == nil then
     timeout = 3
   end
   local d = {
     data = data,
-    return_port = return_port
+    return_port = return_port,
+    protocol = "Get"
   }
-  SendPacket(ip, port, data)
-  r = false
+  p.SendPacket(ip, port, d)
+  local r = false
   while not r do
     r_ip, r_data, r_port = rednet.receive(return_port, timeout)
     if r_ip == ip then
@@ -45,4 +48,4 @@ function Get(ip, port, data, return_port, timeout)
   return r_data
 end
 
-Open()
+return p
