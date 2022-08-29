@@ -16,7 +16,7 @@ function p.GetIP(ip)
     u.out.err("DNS Services have not been implemented!")
     return nil
   end
-  return ip
+  return tonumber(ip)
 end
 
 function p.SendPacket(ip, port, data)
@@ -26,6 +26,7 @@ function p.SendPacket(ip, port, data)
 end
 
 function p.Get(ip, port, data, return_port, timeout)
+  ip = p.GetIP(ip)
   if return_port == nil then
     return_port = "81"
   end
@@ -41,8 +42,15 @@ function p.Get(ip, port, data, return_port, timeout)
   local r = false
   while not r do
     r_ip, r_data, r_port = rednet.receive(return_port, timeout)
+    if r_ip == nil then
+      u.out.warn("Get request to " .. ip .. " timed out!")
+      return nil
+    end
+    u.out.dbg("Received packet from " .. r_ip)
     if r_ip == ip then
       r = true
+    else
+      u.out.warn("Incoming IP does not match expected IP! Ignoring...")
     end
   end
   return r_data
