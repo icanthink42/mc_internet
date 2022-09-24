@@ -1,6 +1,7 @@
 local u = require("/utils/main")
-local p = require("/utils/main")
+local p = require("/packet/main")
 
+s = {}
 local env = {
   ipairs = ipairs,
   next = next,
@@ -42,13 +43,21 @@ local env = {
   net = {
     get = p.Get,
     get_ip = p.GetIP,
-  }
+  },
+  term = term,
+  colors = colors,
+  sleep = sleep,
+  os = {
+    startTimer = os.startTimer,
+    pullEvent = os.pullEvent
+  },
+  keys = keys
 }
 
-s = {}
 
 -- run code under environment [Lua 5.2]
 function s.run(untrusted_code)
+  env.eval = s.run
   local untrusted_function, message = load(untrusted_code, nil, 't', env)
   if not untrusted_function then return nil, message end
   return pcall(untrusted_function)

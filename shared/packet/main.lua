@@ -1,5 +1,6 @@
 local u = require('/utils/main')
 p = {}
+dns_ip = 1
 
 function p.Open()
   modem = peripheral.find("modem", function(name, object) object.side = name return true end)
@@ -13,8 +14,7 @@ end
 
 function p.GetIP(ip)
   if tonumber(ip) == nil then
-    u.out.err("DNS Services have not been implemented!")
-    return nil
+    return p.Get(dns_ip, "80", { requested_ip = ip })
   end
   return tonumber(ip)
 end
