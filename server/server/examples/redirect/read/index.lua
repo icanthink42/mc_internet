@@ -3,8 +3,8 @@ data = {
   run = true,
 }
 
-eval(net.get(
+net.get(
   2,
   "80",
   data
-))
+)
