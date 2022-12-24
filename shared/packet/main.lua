@@ -3,13 +3,12 @@ p = {}
 dns_ip = 1
 
 function p.Open()
-  modem = peripheral.find("modem", function(name, object) object.side = name return true end)
-  if modem == nil then
-    u.out.err("No modem detected on computer!")
-    return false
+  modem_names = peripheral.getNames()
+  for i = 1, modem_names.n do
+    modem = peripheral.wrap(modem_names[i])
+    u.out.dbg("Detected motem on " .. modem["side"] .. " side.")
+    rednet.open(modem["side"])
   end
-  u.out.dbg("Detected motem on " .. modem["side"] .. " side.")
-  rednet.open(modem["side"])
 end
 
 function p.GetIP(ip)
