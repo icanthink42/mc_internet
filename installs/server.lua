@@ -18,4 +18,5 @@ shell.run("wget", "https://raw.githubusercontent.com/icanthink42/mc_internet/mai
   "server/main.lua")
 shell.run("wget", "https://raw.githubusercontent.com/icanthink42/mc_internet/main/server/server/config.lua",
   "server/config.lua")
+
 print("Server Installed!")
