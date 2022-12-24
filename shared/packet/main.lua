@@ -1,6 +1,6 @@
 local u = require('/utils/main')
 p = {}
-dns_ip = 1
+dns_ip = 0
 
 function p.Open()
   modem = peripheral.find("modem", function(name, object) object.side = name return true end)
