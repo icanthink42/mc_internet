@@ -1,6 +1,6 @@
 local u = require('/utils/main')
 p = {}
-dns_ip = 1
+dns_ip = 0
 
 function p.Open()
   modem_names = peripheral.getNames()
