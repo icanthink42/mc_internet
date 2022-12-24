@@ -1,5 +1,5 @@
 -- Folder Creation
-shell.run("mkdir", "dns")
+shell.run("mkdir", "utils")
 shell.run("mkdir", "packet")
 shell.run("mkdir", "server")
 
