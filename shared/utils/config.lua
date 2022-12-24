@@ -1,5 +1,5 @@
 config = {
-  debug = true
+  debug = false
 }
 
 return config
