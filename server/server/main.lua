@@ -9,7 +9,7 @@ while true do
   if data.protocol == "Get" then
     u.out.dbg("Ping from " .. ip .. ": \"" .. u.dump(data) .. "\"")
     local back = {}
-    if not data.run then
+    if not data.data.run then
       back = u.read_file(config.server_path .. "/read/" .. data.data.page) -- FIX!!! Client can read any file with ../
     else
       back = require(config.server_path .. "/run/" .. data.data.page).run(data)
