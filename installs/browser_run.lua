@@ -1,3 +1,8 @@
+-- Old Folder Removal
+shell.run("rm utils")
+shell.run("rm packet")
+shell.run("rm browser")
+
 -- Folder Creation
 shell.run("mkdir", "utils")
 shell.run("mkdir", "packet")
