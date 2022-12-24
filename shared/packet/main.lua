@@ -6,8 +6,10 @@ function p.Open()
   modem_names = peripheral.getNames()
   for i = 1, #modem_names do
     modem = peripheral.wrap(modem_names[i])
-    u.out.dbg("Detected motem on " .. modem["side"] .. " side.")
-    rednet.open(modem["side"])
+    if peripheral.getType(modem) == "modem" then
+      u.out.dbg("Detected motem on " .. modem_names[i] .. " side.")
+      rednet.open(modem_names[i])
+    end
   end
 end
 
