@@ -8,9 +8,9 @@ function p.Open()
   for i = 1, #modem_names do
     modem = peripheral.wrap(modem_names[i])
     if peripheral.getType(modem) == "modem" then
-      u.out.dbg("Detected motem on " .. modem_names[i] .. " side.")
       if rednet.isOpen(modem_names[i]) == false then
         opened = opened + 1
+        u.out.dbg("Opened motem on " .. modem_names[i] .. " side.")
         rednet.open(modem_names[i])
       end
     end
