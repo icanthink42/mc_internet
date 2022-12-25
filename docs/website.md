@@ -6,7 +6,7 @@ wget run https://raw.githubusercontent.com/icanthink42/mc_internet/main/installs
 ```
 
 **Server Config**<br>
-There are two config files for a server:
+There are two config files for a server that will be created automatically when the server is installed:
  * `~/server/config.lua`
     - Allows you to specify where your web pages will be stored.
  * `~/utils/config.lua`
@@ -48,6 +48,7 @@ This allows a lot more interaction between the server and client.<br><br>
 **Testing your Server**<br>
 You are able to get your computers IP by running:
 ```id```
-</br>
+<br>
 It may help to turn on debug mode in `/utils/config.lua`<br>
-
+<br>
+You can run the server by running the file `server/main.lua`
