@@ -20,6 +20,8 @@ In the directory specified in the servers config there should be two folders:
     - Pages in here are send to and ran on the client
  * `[PATH]/run`
     - Pages here are run on the server and generate a page that is sent to the client
+Note: [PATH] is the path specified in `~/server/config.lua`
+<br>
 
 Example of a `run` file:
 ```lua
@@ -49,6 +51,6 @@ This allows a lot more interaction between the server and client.<br><br>
 You are able to get your computers IP by running:
 ```id```
 <br>
-It may help to turn on debug mode in `/utils/config.lua`<br>
+It may help to turn on debug mode in `~/utils/config.lua`<br>
 <br>
-You can run the server by running the file `server/main.lua`
+You can run the server by running the file `~/server/main.lua`
