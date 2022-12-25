@@ -20,7 +20,8 @@ In the directory specified in the servers config there should be two folders:
     - Pages in here are send to and ran on the client
  * `[PATH]/run`
     - Pages here are run on the server and generate a page that is sent to the client
-Note: [PATH] is the path specified in `~/server/config.lua`
+<br>
+*Note: [PATH] is the path specified in `~/server/config.lua`*
 <br>
 
 Example of a `run` file:
